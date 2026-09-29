@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby Tutejaaa | 15 October</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background: #f5eee5;
+        color: #3c3029;
+        font-family: "Montserrat", sans-serif;
+      }
+      #scene2 {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+      }
+
+      #scene2 .date {
+        font-size: clamp(38px, 10vw, 80px);
+        letter-spacing: 8px;
+        margin-bottom: 10px;
+      }
+
+      #scene2 .welcome {
+        font-size: 14px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      #scene2 .event {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 8vw, 65px);
+        letter-spacing: 5px;
+        font-weight: 500;
+      }
+
+      #scene2 .subtext {
+        font-size: 13px;
+        line-height: 1.8;
+        letter-spacing: 2px;
+        opacity: 0.7;
+        margin-top: 8px;
+      }
+      /* =========================
+   VIDEO STAGE
+========================= */
+
+      .video {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* =========================
+   SCENES
+========================= */
+
+      .scene {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: scale(1.04);
+
+        transition:
+          opacity 1.4s ease,
+          transform 2.2s ease,
+          visibility 1.4s;
+      }
+
+      .scene.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+
+      /* =========================
+   OPENING
+========================= */
+
+      .opening {
+        background:
+          radial-gradient(
+            circle at 50% 40%,
+            rgba(205, 169, 140, 0.18),
+            transparent 38%
+          ),
+          #f5eee5;
+      }
+
+      .opening-content {
+        width: 90%;
+      }
+
+      .tiny {
+        font-size: 9px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        margin-bottom: 28px;
+      }
+
+      .opening h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(65px, 15vw, 145px);
+        font-weight: 400;
+        line-height: 0.76;
+      }
+
+      .opening-sub {
+        margin-top: 35px;
+        font-size: 9px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+
+      .open-button {
+        margin-top: 45px;
+        padding: 16px 38px;
+
+        background: transparent;
+        border: 1px solid rgba(60, 48, 41, 0.4);
+
+        color: #3c3029;
+
+        font-size: 9px;
+        letter-spacing: 4px;
+
+        cursor: pointer;
+
+        transition: 0.4s;
+      }
+
+      .open-button:hover {
+        background: #3c3029;
+        color: white;
+      }
+
+      /* =========================
+   COMMON TEXT
+========================= */
+
+      .eyebrow {
+        font-size: 9px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        margin-bottom: 25px;
+      }
+
+      .line {
+        width: 60px;
+        height: 1px;
+        background: #806c5e;
+        opacity: 0.45;
+        margin: 28px auto;
+      }
+
+      .serif {
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* =========================
+   SCENE 2
+========================= */
+
+      .scene-two {
+        background: #f5eee5;
+      }
+
+      .scene-two h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(70px, 14vw, 140px);
+        font-weight: 400;
+        line-height: 0.75;
+      }
+
+      .scene-two p {
+        font-size: 9px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+
+      /* =========================
+   DATE
+========================= */
+
+      .date-scene {
+        background: #eadbca;
+      }
+
+      .date-content {
+        width: 90%;
+      }
+
+      .date-small {
+        font-size: 9px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        margin-bottom: 35px;
+      }
+
+      .date-number {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(150px, 30vw, 310px);
+        font-weight: 300;
+        line-height: 0.55;
+      }
+
+      .date-month {
+        margin-top: 45px;
+        font-size: 13px;
+        letter-spacing: 12px;
+      }
+
+      .date-bottom {
+        margin-top: 28px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+      }
+
+      /* =========================
+   MESSAGE
+========================= */
+
+      .message-scene {
+        background: #f5eee5;
+      }
+
+      .message-content {
+        width: 90%;
+      }
+
+      .message-content h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(65px, 13vw, 130px);
+        line-height: 0.78;
+        font-weight: 400;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .message-bottom {
+        font-size: 9px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+
+      /* =========================
+   BABY REVEAL
+========================= */
+
+      .baby-scene {
+        background: #dfcbbb;
+      }
+
+      .baby-content {
+        width: 90%;
+      }
+
+      .baby-small {
+        font-size: 9px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        margin-bottom: 30px;
+      }
+
+      .baby-content h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(75px, 16vw, 165px);
+        line-height: 0.68;
+        font-weight: 400;
+      }
+
+      .baby-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(40px, 8vw, 80px);
+        letter-spacing: 5px;
+        margin-top: 45px;
+      }
+
+      /* =========================
+   PHOTO
+========================= */
+
+      .photo-scene {
+        background: #f5eee5;
+      }
+
+      .photo-content {
+        width: 90%;
+      }
+
+      .photo-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(50px, 10vw, 100px);
+        line-height: 0.8;
+        font-weight: 400;
+      }
+
+      .photo-frame {
+        width: min(380px, 72vw);
+        height: min(470px, 63vh);
+
+        margin: 35px auto 0;
+
+        overflow: hidden;
+
+        box-shadow: 0 25px 70px rgba(55, 40, 30, 0.16);
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* =========================
+   FINAL
+========================= */
+
+      .final-scene {
+        background: #3c3029;
+        color: #f5eee5;
+      }
+
+      .final-content {
+        width: 90%;
+      }
+
+      .final-small {
+        font-size: 9px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 28px;
+      }
+
+      .final-content h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(70px, 15vw, 150px);
+        line-height: 0.7;
+        font-weight: 400;
+      }
+
+      .final-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(38px, 8vw, 75px);
+        letter-spacing: 5px;
+        margin-top: 35px;
+      }
+
+      .final-heart {
+        margin-top: 55px;
+        font-size: 16px;
+        opacity: 0.55;
+      }
+
+      /* =========================
+   MUSIC
+========================= */
+
+      .music {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+
+        width: 44px;
+        height: 44px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(60, 48, 41, 0.3);
+
+        background: rgba(245, 238, 229, 0.8);
+
+        backdrop-filter: blur(10px);
+
+        color: #3c3029;
+
+        z-index: 100;
+
+        cursor: pointer;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.5s;
+      }
+
+      .music.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* =========================
+   DECORATION
+========================= */
+
+      .ring {
+        position: absolute;
+        border: 1px solid rgba(70, 50, 40, 0.12);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .ring-one {
+        width: 350px;
+        height: 350px;
+        left: -180px;
+        top: -80px;
+      }
+
+      .ring-two {
+        width: 430px;
+        height: 430px;
+        right: -220px;
+        bottom: -180px;
+      }
+
+      @media (max-width: 600px) {
+        .opening h1 {
+          font-size: 75px;
+        }
+
+        .date-number {
+          font-size: 165px;
+        }
+
+        .baby-content h2 {
+          font-size: 85px;
+        }
+
+        .photo-frame {
+          width: 75vw;
+          height: 58vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="video">
+      <!-- =========================
+         SCENE 0 — OPEN
+    ========================== -->
+
+      <section class="scene opening active" id="scene0">
+        <div class="opening-content">
+          <div class="tiny">A Little Surprise</div>
+
+          <h1>
+            You're<br />
+            Invited
+          </h1>
+
+          <div class="opening-sub">To A Very Special Reveal</div>
+
+          <button class="open-button" onclick="startVideo()">
+            OPEN INVITATION
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================
+         SCENE 1
+    ========================== -->
+
+      <section class="scene scene-two" id="scene1">
+        <div class="ring ring-one"></div>
+        <div class="ring ring-two"></div>
+
+        <div>
+          <div class="eyebrow">With Love & Happiness</div>
+
+          <h2>
+            A New<br />
+            Chapter
+          </h2>
+
+          <div class="line"></div>
+
+          <p>Is About To Begin</p>
+        </div>
+      </section>
+
+      <!-- =========================
+         SCENE 2 — DATE
+    ========================== -->
+
+      <div class="scene" id="scene2">
+        <div class="date">15 OCTOBER 2026</div>
+
+        <div class="welcome">We Welcome You To Celebrate</div>
+
+        <div class="event">OUR BABY SHOWER</div>
+
+        <div class="subtext">
+          As we celebrate the beautiful journey<br />
+          of our little miracle
+        </div>
+      </div>
+      <!-- =========================
+         SCENE 3
+    ========================== -->
+
+      <section class="scene message-scene" id="scene3">
+        <div class="message-content">
+          <div class="eyebrow">Something Beautiful</div>
+
+          <h2>
+            Our Little<br />
+            <span class="italic">Miracle</span><br />
+            Is On The Way...
+          </h2>
+
+          <div class="line"></div>
+
+          <div class="message-bottom">And Our Hearts Couldn't Be Happier</div>
+        </div>
+      </section>
+
+      <!-- =========================
+         SCENE 4 — BABY
+    ========================== -->
+
+      <section class="scene baby-scene" id="scene4">
+        <div class="baby-content">
+          <div class="baby-small">A Tiny Little Surprise</div>
+
+          <h2>
+            COMING<br />
+            SOON
+          </h2>
+
+          <div class="baby-name">BABY TUTEJAAA</div>
+        </div>
+      </section>
+
+      <!-- =========================
+         SCENE 5 — PHOTO
+         
+         Put pregnancy.jpg
+         beside index.html
+    ========================== -->
+
+      <section class="scene photo-scene" id="scene5">
+        <div class="photo-content">
+          <div class="eyebrow">A Memory To Cherish</div>
+
+          <div class="photo-title">
+            Before<br />
+            We Meet You
+          </div>
+
+          <div class="line"></div>
+
+          <div class="photo-frame">
+            <img src="C:\Users\vprat\Downloads\dec.jpg" alt="Pregnancy Photo" />
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+         SCENE 6 — END
+    ========================== -->
+
+      <section class="scene final-scene" id="scene6">
+        <div class="final-content">
+          <div class="final-small">Until Then...</div>
+
+          <h2>
+            COMING<br />
+            SOON
+          </h2>
+
+          <div class="final-name">BABY TUTEJAAA</div>
+
+          <div class="final-heart">♡</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================
+     MUSIC
+
+     Same folder:
+     song.mp3
+========================= -->
+
+    <audio id="song" loop>
+      <source src="C:\Users\vprat\Downloads\music.mp3.mp3" type="audio/mpeg" />
+    </audio>
+
+    <button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+    <script>
+      const scenes = [
+        document.getElementById("scene0"),
+        document.getElementById("scene1"),
+        document.getElementById("scene2"),
+        document.getElementById("scene3"),
+        document.getElementById("scene4"),
+        document.getElementById("scene5"),
+        document.getElementById("scene6"),
+      ];
+
+      const song = document.getElementById("song");
+
+      const musicBtn = document.getElementById("musicBtn");
+
+      let currentScene = 0;
+
+      let playing = false;
+
+      /* =====================================
+   START VIDEO
+===================================== */
+
+      function startVideo() {
+        playing = true;
+
+        musicBtn.classList.add("show");
+
+        song.play().catch(() => {});
+
+        currentScene = 1;
+
+        showScene(currentScene);
+
+        setTimeout(() => {
+          playNext();
+        }, 4200);
+      }
+
+      /* =====================================
+   SHOW SCENE
+===================================== */
+
+      function showScene(index) {
+        scenes.forEach((scene, i) => {
+          if (i === index) {
+            scene.classList.add("active");
+          } else {
+            scene.classList.remove("active");
+          }
+        });
+      }
+
+      /* =====================================
+   AUTOMATIC VIDEO
+===================================== */
+
+      function playNext() {
+        if (!playing) return;
+
+        currentScene++;
+
+        if (currentScene >= scenes.length) {
+          currentScene = scenes.length - 1;
+
+          return;
+        }
+
+        showScene(currentScene);
+
+        /*
+       Timing for each scene
+    */
+
+        let duration = 4500;
+
+        if (currentScene === 1) {
+          duration = 4300;
+        }
+
+        if (currentScene === 2) {
+          duration = 5000;
+        }
+
+        if (currentScene === 3) {
+          duration = 5000;
+        }
+
+        if (currentScene === 4) {
+          duration = 5500;
+        }
+
+        if (currentScene === 5) {
+          duration = 6500;
+        }
+
+        if (currentScene === 6) {
+          duration = 7000;
+        }
+
+        if (currentScene < scenes.length - 1) {
+          setTimeout(playNext, duration);
+        }
+      }
+
+      /* =====================================
+   MUSIC BUTTON
+===================================== */
+
+      function toggleMusic() {
+        if (song.paused) {
+          song.play();
+
+          musicBtn.innerHTML = "❚❚";
+        } else {
+          song.pause();
+
+          musicBtn.innerHTML = "♫";
+        }
+      }
+
+      /* =====================================
+   UPDATE MUSIC ICON
+===================================== */
+
+      song.addEventListener("play", () => {
+        musicBtn.innerHTML = "❚❚";
+      });
+
+      song.addEventListener("pause", () => {
+        musicBtn.innerHTML = "♫";
+      });
+    </script>
+  </body>
+</html>
